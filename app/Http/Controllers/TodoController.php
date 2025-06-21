@@ -58,7 +58,6 @@ class TodoController extends Controller
       $request->validate([
          'title'         => 'required|min:5',
          'description'   => 'required|min:10',
-         'status'         => 'required',
       ]);
 
       //get todo berdasarkan ID
@@ -68,7 +67,6 @@ class TodoController extends Controller
       $todo->update([
          'title'         => $request->title,
          'description'   => $request->description,
-         'status'         => $request->status
       ]);
 
       //kembali ke index
@@ -85,5 +83,14 @@ class TodoController extends Controller
 
       //kembali ke index
       return redirect()->route('todos.index')->with(['success' => 'Data Berhasil Dihapus!']);
+   }
+
+   public function updateStatus(Request $request)
+   {
+      $todo = Todo::findOrFail($request->id);
+      $todo->status = $request->status;
+      $todo->save();
+
+      return response()->json(['message' => 'Status updated successfully.']);
    }
 }
