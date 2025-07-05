@@ -103,6 +103,13 @@
             },
             success: function(response) {
                console.log('Status updated:', response.message);
+               Swal.fire({
+                  icon: 'success',
+                  title: 'Berhasil',
+                  text: response.message || 'Status berhasil diperbarui',
+                  timer: 2000,
+                  showConfirmButton: false
+               });
             },
             error: function() {
                alert('Gagal update status.');

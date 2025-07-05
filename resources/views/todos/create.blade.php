@@ -63,7 +63,7 @@
                </div>
 
                <button type="submit" class="btn btn-md btn-primary me-3">SAVE</button>
-               <button type="reset" class="btn btn-md btn-warning">RESET</button>
+               <a href="{{ route('todos.index') }}" class="btn btn-md btn-danger">BACK</a>
          </div>
          </form>
       </div>
